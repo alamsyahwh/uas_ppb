@@ -19,9 +19,9 @@ class CourseScheduleTile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Column(
                 children: [
-                  Text(data.timeStart.format(context)),
+                  Text(data.startTime),
                   Text(
-                    data.timeEnd.format(context),
+                    data.endTime,
                     style: const TextStyle(
                       color: ColorName.grey,
                     ),
@@ -38,19 +38,36 @@ class CourseScheduleTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  data.course,
-                  style: const TextStyle(
-                    color: ColorName.primary,
+                FittedBox(
+                  fit: BoxFit.scaleDown, // Sesuaikan dengan preferensi Anda
+                  child: Text(
+                    data.course,
+                    style: const TextStyle(
+                      color: ColorName.primary,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 const SizedBox(height: 18.0),
-                Text('Dosen: ${data.lecturer}'),
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    'Dosen: ${data.lecturer}',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
                 const SizedBox(height: 18.0),
-                Text(
-                  data.description,
-                  style: const TextStyle(
-                    color: ColorName.grey,
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    data.description,
+                    style: const TextStyle(
+                      color: ColorName.grey,
+                    ),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],

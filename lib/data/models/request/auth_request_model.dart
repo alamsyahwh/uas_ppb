@@ -1,34 +1,31 @@
-// To parse this JSON data, do
-//
-//     final authRequestModel = authRequestModelFromMap(jsonString);
-
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-AuthRequestModel authRequestModelFromMap(String str) =>
-    AuthRequestModel.fromMap(json.decode(str));
-
-String authRequestModelToMap(AuthRequestModel data) =>
-    json.encode(data.toMap());
-
 class AuthRequestModel {
-  String email;
-  String password;
+  final String email;
+  final String password;
 
   AuthRequestModel({
     required this.email,
     required this.password,
   });
 
-  factory AuthRequestModel.fromMap(Map<String, dynamic> json) =>
-      AuthRequestModel(
-        email: json["email"],
-        password: json["password"],
-      );
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'email': email,
+      'password': password,
+    };
+  }
 
-  Map<String, dynamic> toMap() => {
-        "email": email,
-        "password": password,
-      };
+  factory AuthRequestModel.fromMap(Map<String, dynamic> map) {
+    return AuthRequestModel(
+      email: map['email'] as String,
+      password: map['password'] as String,
+    );
+  }
 
-  toJson() {}
+  String toJson() => json.encode(toMap());
+
+  factory AuthRequestModel.fromJson(String source) =>
+      AuthRequestModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

@@ -6,7 +6,8 @@ import 'package:project_uas_ppb/data/models/response/auth_response_model.dart';
 import 'package:http/http.dart' as http;
 
 class AuthRemoteDatasource {
-  Future<Object> login(AuthRequestModel requestModel) async {
+  Future<Either<String, AuthResponseModel>> login(
+      AuthRequestModel requestModel) async {
     final headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -16,6 +17,7 @@ class AuthRemoteDatasource {
       headers: headers,
       body: requestModel.toJson(),
     );
+
     if (response.statusCode == 200) {
       return Right(AuthResponseModel.fromJson(response.body));
     } else {
@@ -23,7 +25,7 @@ class AuthRemoteDatasource {
     }
   }
 
-  Future<Object> logout() async {
+  Future<Either<String, String>> logout() async {
     final headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -33,6 +35,7 @@ class AuthRemoteDatasource {
       Uri.parse('${Variables.baseUrl}/api/logout'),
       headers: headers,
     );
+
     if (response.statusCode == 200) {
       return const Right('Logout Successfuly');
     } else {
@@ -40,5 +43,3 @@ class AuthRemoteDatasource {
     }
   }
 }
-
-class Either {}

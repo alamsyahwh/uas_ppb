@@ -1,23 +1,18 @@
-// To parse this JSON data, do
-//
-//     final authResponseModel = authResponseModelFromMap(jsonString);
-
 import 'dart:convert';
 
-AuthResponseModel authResponseModelFromMap(String str) =>
-    AuthResponseModel.fromMap(json.decode(str));
-
-String authResponseModelToMap(AuthResponseModel data) =>
-    json.encode(data.toMap());
-
 class AuthResponseModel {
-  String jwtToken;
-  User user;
+  final String jwtToken;
+  final User user;
 
   AuthResponseModel({
     required this.jwtToken,
     required this.user,
   });
+
+  factory AuthResponseModel.fromJson(String str) =>
+      AuthResponseModel.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
 
   factory AuthResponseModel.fromMap(Map<String, dynamic> json) =>
       AuthResponseModel(
@@ -29,17 +24,13 @@ class AuthResponseModel {
         "jwt-token": jwtToken,
         "user": user.toMap(),
       };
-
-  static fromJson(String jsonString) {}
-
-  String toJson()=> json.encode(toMap());
 }
 
 class User {
-  int id;
-  String name;
-  String email;
-  String roles;
+  final int id;
+  final String name;
+  final String email;
+  final String roles;
 
   User({
     required this.id,
@@ -47,6 +38,10 @@ class User {
     required this.email,
     required this.roles,
   });
+
+  factory User.fromJson(String str) => User.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
 
   factory User.fromMap(Map<String, dynamic> json) => User(
         id: json["id"],

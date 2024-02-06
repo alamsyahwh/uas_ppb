@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_uas_ppb/pages/mahasiswa/jadwal_matkul_page.dart';
 
 import '../../common/components/menu_card.dart';
 import '../../common/components/search_input.dart';
@@ -6,8 +7,7 @@ import '../../common/constants/colors.dart';
 import '../../common/constants/images.dart';
 import 'absensi_page.dart';
 import 'khs_page.dart';
-import 'nilai_mk_page.dart';
-import 'schedules_page.dart';
+import 'nilaimk_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -28,7 +28,7 @@ class _DashboardPageState extends State<DashboardPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              "Perkulia",
+              "Perkuliahan",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
@@ -92,7 +92,7 @@ class _DashboardPageState extends State<DashboardPage> {
           backgroundColor: const Color.fromARGB(255, 19, 219, 193),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return const SchedulesPage();
+              return const JadwalMatkulPage();
             }));
           },
           imagePath: Images.jadwal,
