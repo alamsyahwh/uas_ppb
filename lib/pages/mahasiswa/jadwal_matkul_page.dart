@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_uas_ppb/common/constants/images.dart';
 import 'package:project_uas_ppb/common/extensions/date_time_ext.dart';
+import 'package:project_uas_ppb/data/datasources/schedule_remote_datasource.dart';
 import 'package:project_uas_ppb/data/models/response/schedule_response_model.dart';
 
-// import '../../bloc/schedules/schedules_bloc.dart';
-import '../../common/constants/images.dart';
-import '../../data/datasources/schedule_remote_datasource.dart';
 import 'models/course_schedule_model.dart';
 import 'widgets/course_schedule_tile.dart';
 import 'widgets/course_with_image.dart';
 
 class JadwalMatkulPage extends StatefulWidget {
-  const JadwalMatkulPage({super.key});
+  const JadwalMatkulPage({Key? key}) : super(key: key);
 
   @override
   State<JadwalMatkulPage> createState() => _JadwalMatkulPageState();
@@ -28,15 +26,24 @@ class _JadwalMatkulPageState extends State<JadwalMatkulPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Kembali'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+      body: SafeArea(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Padding(
               padding: EdgeInsets.all(24.0),
               child: Text(
-                "Jadwal MK",
+                "Jadwal Mata Kuliah",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w700,

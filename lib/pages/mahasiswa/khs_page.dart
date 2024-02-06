@@ -4,13 +4,12 @@ import 'package:project_uas_ppb/bloc/khs/khs_bloc.dart';
 import 'package:project_uas_ppb/data/models/response/auth_response_model.dart';
 import 'package:project_uas_ppb/pages/mahasiswa/widgets/get_initials.dart';
 
-// import '../../common/components/custom_scaffold.dart';
 import '../../common/components/row_text.dart';
 import '../../common/constants/colors.dart';
 import '../../data/datasources/auth_local_datasource.dart';
 
 class KhsPage extends StatefulWidget {
-  const KhsPage({super.key});
+  const KhsPage({Key? key}) : super(key: key);
 
   @override
   State<KhsPage> createState() => _KhsPageState();
@@ -31,12 +30,18 @@ class _KhsPageState extends State<KhsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Kembali"),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
-          // padding: const EdgeInsets.all(24.0),
-          // shrinkWrap: true,
-          // physics: const NeverScrollableScrollPhysics(),
           children: [
             const Text(
               "KHS Mahasiswa",
@@ -46,7 +51,6 @@ class _KhsPageState extends State<KhsPage> {
                 color: ColorName.primary,
               ),
             ),
-
             const SizedBox(height: 16.0),
             FutureBuilder<User?>(
               future: _userFuture,
@@ -80,7 +84,6 @@ class _KhsPageState extends State<KhsPage> {
               ),
             ),
             const SizedBox(height: 14.0),
-            //tampil data nilai dan mk
             Expanded(
               child: BlocBuilder<KhsBloc, KhsState>(
                 builder: (context, state) {
@@ -99,26 +102,27 @@ class _KhsPageState extends State<KhsPage> {
                         total += int.parse(element.nilai);
                       });
                       ipk = total / data.length;
-                      return Column(children: [
-                        Expanded(
-                          child: ListView.builder(
-                            padding: const EdgeInsets.all(20),
-                            shrinkWrap: true,
-                            // physics: const NeverScrollableScrollPhysics(),
-                            itemCount: data.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 6),
-                                child: RowText(
-                                  label: data[index].subject.title,
-                                  value: data[index].grade.toString(),
-                                ),
-                              );
-                            },
+                      return Column(
+                        children: [
+                          Expanded(
+                            child: ListView.builder(
+                              padding: const EdgeInsets.all(20),
+                              shrinkWrap: true,
+                              itemCount: data.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 6),
+                                  child: RowText(
+                                    label: data[index].subject.title,
+                                    value: data[index].grade.toString(),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                      ]);
+                        ],
+                      );
                     },
                   );
                 },
