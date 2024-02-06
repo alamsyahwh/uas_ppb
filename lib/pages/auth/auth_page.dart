@@ -34,15 +34,15 @@ class _AuthPageState extends State<AuthPage> {
               style: TextStyle(
                 fontSize: 34,
                 fontWeight: FontWeight.w800,
-                color: ColorName.primary,
+                color: Color.fromRGBO(41, 22, 111, 1),
               ),
             ),
             const SizedBox(height: 8.0),
             const Text(
-              "Melayani Edukasi, Memudahkan Administrasi!",
+              "KELOMPOK 4",
               style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
                 color: ColorName.grey,
               ),
             ),

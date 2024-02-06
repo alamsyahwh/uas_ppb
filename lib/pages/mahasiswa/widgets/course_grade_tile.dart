@@ -4,9 +4,6 @@ import '../../../common/components/row_text.dart';
 import '../../../common/constants/colors.dart';
 import '../models/course_grade_model.dart';
 
-
-
-
 class CourseGradeTile extends StatelessWidget {
   final CourseGradeModel data;
   const CourseGradeTile({super.key, required this.data});
@@ -22,14 +19,14 @@ class CourseGradeTile extends StatelessWidget {
           leading: ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(50.0)),
             child: Image.network(
-              'https://assets.ayobandung.com/crop/0x0:0x0/750x500/webp/photo/2021/12/15/1405406409.jpg',
+              'https://awsimages.detik.net.id/community/media/visual/2022/03/21/youtuber-dede-inoen-ngumpet-di-kolong-rel-kereta_169.jpeg?w=600&q=90',
               width: 40,
               height: 40,
               fit: BoxFit.cover,
             ),
           ),
           title: const Text(
-            "Jesica Jane",
+            "User Kasep",
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
